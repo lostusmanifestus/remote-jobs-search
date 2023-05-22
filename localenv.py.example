@@ -1,0 +1,127 @@
+#debug flag for the application
+#DEBUG_MODE=True
+DEBUG_MODE=False
+
+#job search keyword
+SEARCH_KEYWORD="devops"
+JOB_DETAILS=False #not-used for now
+
+#sqlite parameters
+SQLITE_DATABASE="/home/remotejobs/sqlite_remotejobs.db"
+SQLITE_TABLE="jobdetails"
+
+#your name and email
+CONTACTNAME="dummyname"
+CONTACT="dummyemail@dummyexample.com"
+
+#flask parameters
+FLASK_DEBUG=True
+#pretty-print json output
+FLASK_JSON_PRETTYPRINT=True
+#flask secret-key
+FLASK_SECRET_KEY=""
+
+#send-in-blue api key to send email
+APIKEY_SENDINBLUE=""
+
+#list of job sites with their properties
+JOB_SITES = {
+  "jobsites": [
+    {
+      "name": "remotesoftwareengineeringjobs",
+      "url": "https://remotesoftwareengineeringjobs.com",
+      "urlfilter": "?tech=KEYWORD&location=Worldwide",
+      "htmltype": "class",
+      "htmlfilter": "app-container",
+      "resultsfilter": None,
+      "extendPath": False,
+      "enabled": True
+    },
+    {
+      "name": "remoteok",
+      "url": "https://remoteok.com",
+      "urlfilter": "remote-KEYWORD-jobs?location=Worldwide",
+      "htmltype": "table",
+      "htmlfilter": "jobsboard",
+      "resultsfilter": None,
+      "extendPath": True,
+      "enabled": True
+    },
+    { 
+      "name": "opsjobs",
+      "url": "https://ops-jobs.com",
+      "urlfilter": "?search_keywords=KEYWORD&search_location=Remote(World)",
+      "htmltype": "section", 
+      "htmlfilter": "job-posting-section",
+      "resultsfilter": None,
+      "extendPath": False,
+      "enabled": True 
+    },
+    #data retrieval from this method does not work
+    {
+      "name": "workingnomads",
+      "url": "https://www.workingnomads.com",
+      "urlfilter": "jobs?location=anywhere&tag=KEYWORD",
+      "htmltype": "class",
+      "htmlfilter": "jobs-list",
+      "resultsfilter": None,
+      "extendPath": False,
+      "enabled": False
+    },
+    {
+      "name": "weworkremotely",
+      "url": "https://weworkremotely.com",
+      "urlfilter": "remote-jobs/search?term=KEYWORD&sort=any_time&region[]=0",
+      "htmltype": "class",
+      "htmlfilter": "jobs-container",
+      "resultsfilter": "remote-jobs",
+      "extendPath": True,
+      "enabled": True
+    },
+    {
+      "name": "remoteco",
+      "url": "https://remote.co",
+      #"urlfilter": "remote-jobs/search/?search_keywords=KEYWORD",
+      "urlfilter": "international-remote-jobs/",
+      "htmltype": "class",
+      #"htmlfilter": "job_listings",
+      "htmlfilter": "container pt-4",
+      "resultsfilter": "/job/",
+      "extendPath": True,
+      "enabled": True
+    },
+    {
+      "name": "trulyremote",
+      "url": "https://trulyremote.co",
+      "urlfilter": "?search=KEYWORD",
+      #"htmltype": "class",
+      #"htmlfilter": "font-body"
+      "htmltype": "script",
+      "htmlfilter": "__NEXT_DATA__",
+      "resultsfilter": None,
+      "extendPath": False,
+      "enabled": True 
+    },
+  ]
+}
+
+#pandas output formatting
+OUTPUT_FORMAT = '''
+                    <style>
+                         .df th { background-color: lightgray; text-align: left }
+                    </style>
+                    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+                    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+                    <script>
+                      $(document).ready(function () {
+                        $('#table').DataTable({
+                          paging: true,
+                          //scrollY: 375,
+                          order: [[2, 'desc']], //sort-by-job-added-time
+                          stateSave: true, //saves the state of a table (its paging position, ordering state etc). Uses HTML5 localStorage and sessionStorage.
+                        });
+                      });
+                    </script>
+                '''
+
+#BUY_ME_COFFEE_URL="https://www.buymeacoffee.com/lostusmanifest"
